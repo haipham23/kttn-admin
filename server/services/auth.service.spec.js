@@ -6,7 +6,7 @@ const MockAdapter = require('axios-mock-adapter');
 
 const auth = require('./auth.service');
 
-describe.only('auth services', () => {
+describe('AuthService', () => {
   const sandbox = sinon.sandbox.create();
   const mockRequest = new MockAdapter(axios);
 
@@ -66,7 +66,7 @@ describe.only('auth services', () => {
   });
 
 
-  describe.only('isAuth()', () => {
+  describe('isAuth()', () => {
     it('should verify token and move to next function', (done) => {
       sandbox.stub(auth, 'getTokenFromReq').callsFake(() => Promise.resolve());
       sandbox.stub(auth, 'verifyToken').callsFake(() => Promise.resolve());

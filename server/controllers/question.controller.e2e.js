@@ -12,8 +12,8 @@ app.post('/update-path', QuestionController.update);
 app.post('/toggle-path', QuestionController.toggle);
 app.post('/remove-path', QuestionController.remove);
 
-describe.only('question controller', () => {
-  describe.only('create()', () => {
+describe('question controller', () => {
+  describe('create()', () => {
     beforeEach((done) => {
       QuestionModel.remove({}, () => done());
     });
@@ -77,7 +77,12 @@ describe.only('question controller', () => {
       request(app)
         .get('/fetch-path?skip=0&limit=2')
         .expect(200)
-        .then((docs) => {
+        .then((response) => {
+          expect(response.body.length).to.equal(2);
+
+          expect(response.body[0].content).to.equal('Update Question 1');
+          expect(response.body[1].content).to.equal('Update Question 3');
+
           done();
         });
     });

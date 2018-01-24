@@ -1,0 +1,55 @@
+{
+  "create": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": ["content"]
+  },
+  "update": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "content": {
+        "type": "string"
+      }
+    },
+    "required": ["_id", "content"]
+  },
+  "fetch": {
+    "properties": {
+      "skip": {
+        "type": "number",
+        "minimum": 0
+      },
+      "limit": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "required": ["skip", "limit"]
+  },
+  "toggle": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "isActive": {
+        "type": "boolean"
+      }
+    },
+    "required": ["_id", "isActiver"]
+  },
+  "remove": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      }
+    },
+    "required": ["_id"]
+  }
+}

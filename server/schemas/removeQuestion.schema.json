@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "_id": {
-      "type": "string"
-    }
-  },
-  "required": ["_id"]
-}

@@ -1,30 +1,24 @@
-const _ = require('lodash');
-
 const PropFactory = require('../factories/prop.factory');
 
 const QuestionModel = require('../models/question.model');
 
-const CreateQuestionSchema = require('../schemas/createQuestion.schema.json');
-const UpdateQuestionSchema = require('../schemas/updateQuestion.schema.json');
-const FetchQuestionSchema = require('../schemas/fetchQuestion.schema.json');
-const ToggleQuestionSchema = require('../schemas/toggleQuestion.schema.json');
-const RemoveQuestionSchema = require('../schemas/removeQuestion.schema.json');
+const QuestionSchema = require('../schemas/question.schema.json');
 
 
-const getCreateProps = data => PropFactory.check(CreateQuestionSchema, data);
+const getCreateProps = data => PropFactory.check(QuestionSchema.create, data.question);
 
-const getUpdateProps = data => PropFactory.check(UpdateQuestionSchema, data);
+const getUpdateProps = data => PropFactory.check(QuestionSchema.update, data.question);
 
 const getFetchProps = (data) => {
   const { skip, limit } = data;
   const newData = Object.assign({}, { skip: +skip }, { limit: +limit });
 
-  return PropFactory.check(FetchQuestionSchema, newData);
+  return PropFactory.check(QuestionSchema.fetch, newData);
 };
 
-const getToggleProps = data => PropFactory.check(ToggleQuestionSchema, data);
+const getToggleProps = data => PropFactory.check(QuestionSchema.toggle, data.question);
 
-const getRemoveProps = data => PropFactory.check(RemoveQuestionSchema, data);
+const getRemoveProps = data => PropFactory.check(QuestionSchema.remove, data.question);
 
 
 const fetch = data =>

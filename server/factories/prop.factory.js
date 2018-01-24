@@ -1,6 +1,6 @@
 const Ajv = require('ajv');
 
-const ajv = new Ajv();
+const ajv = new Ajv({ allErrors: true, v5: true });
 
 
 const check = (schema, data) =>

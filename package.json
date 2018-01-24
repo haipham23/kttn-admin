@@ -8,8 +8,9 @@
     "start": "node app.js",
     "lint": "eslint .",
     "test:fe": "mocha --require tests/fe.prep.js client/js/**/*.spec.js --recursive",
-    "test:be": "mocha --require tests/be.prep.js server/**/*.spec.js --recursive",
-    "test:be:e2e": "mocha --require tests/be.prep.js server/**/*.e2e.js --recursive"
+    "test:be:spec": "mocha --require tests/be.prep.js server/**/*.spec.js --recursive",
+    "test:be:e2e": "mocha --require tests/be.prep.js server/**/*.e2e.js --recursive",
+    "test": "npm run lint && npm run test:fe && npm run test:be:spec"
   },
   "dependencies": {
     "ajv": "^6.0.1",
