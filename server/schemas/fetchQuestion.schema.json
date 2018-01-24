@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "skip": {
+      "type": "number",
+      "minimum": 0
+    },
+    "limit": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": ["skip", "limit"]
+}

@@ -1,0 +1,6 @@
+public/**/*.js
+.*
+gulpfile.js
+coverage
+.tmp
+.vscode

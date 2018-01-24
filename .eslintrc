@@ -1,0 +1,135 @@
+
+{
+  "extends": "airbnb-base",
+  "globals": {
+    "sails": true,
+    "beforeAll": true,
+    "afterAll": true,
+    "before": true,
+    "after": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "describe": true,
+    "it": true,
+    "_": true,
+    "document": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-trailing-spaces": "warn",
+    "no-alert": 2,
+    "no-var": "warn",
+    "quotes": [
+      2,
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-console": "error",
+    "indent": [ "error", 2,
+      {
+        "VariableDeclarator": { "var": 2, "let": 2, "const": 3 },
+        "FunctionExpression": {"body": 1, "parameters": 2},
+        "SwitchCase": 1
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "no-underscore-dangle": "off",
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/display-name": ["off", { "ignoreTranspilerName": false }],
+    "react/forbid-prop-types": ["error", { "forbid": ["any", "object"] }],
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+    "react/jsx-curly-spacing": ["error", "never", { "allowMultiline": true }],
+    "react/jsx-handler-names": ["off", {
+      "eventHandlerPrefix": "handle",
+      "eventHandlerPropPrefix": "on"
+    }],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-key": "off",
+    "react/jsx-max-props-per-line": ["off", { "maximum": 1, "when": "multiline" }],
+    "react/jsx-no-bind": ["error", {
+      "ignoreRefs": true,
+      "allowArrowFunctions": true,
+      "allowBind": false
+    }],
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": true }],
+    "react/jsx-no-literals": "off",
+    "react/jsx-no-undef": "error",
+    "react/jsx-pascal-case": ["error", {
+      "allowAllCaps": true,
+      "ignore": []
+    }],
+    "react/sort-prop-types": ["off", {
+      "ignoreCase": true,
+      "callbacksLast": false,
+      "requiredFirst": false
+    }],
+    "react/jsx-sort-prop-types": "off",
+    "react/jsx-sort-props": ["off", {
+      "ignoreCase": true,
+      "callbacksLast": false,
+      "shorthandFirst": false,
+      "shorthandLast": false,
+      "noSortAlphabetically": false
+    }],
+    "react/jsx-uses-react": ["error"],
+    "react/jsx-uses-vars": "error",
+    "react/no-danger": "warn",
+    "react/no-deprecated": ["error"],
+    "react/no-direct-mutation-state": "off",
+    "react/no-is-mounted": "error",
+    "react/no-multi-comp": ["error", { "ignoreStateless": true }],
+    "react/no-string-refs": "error",
+    "react/no-unknown-property": "error",
+    "react/prefer-es6-class": ["error", "always"],
+    "react/prop-types": ["error", { "ignore": [], "customValidators": [], "skipUndeclared": false }],
+    "react/react-in-jsx-scope": "error",
+    "react/require-extension": ["off", { "extensions": [".jsx", ".js"] }],
+    "react/require-render-return": "error",
+    "react/self-closing-comp": "error",
+    "react/sort-comp": ["error", {
+      "order": [
+        "static-methods",
+        "lifecycle",
+        "/^on.+$/",
+        "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+        "everything-else",
+        "/^render.+$/",
+        "render"
+      ]
+    }],
+    "react/jsx-wrap-multilines": ["error", {
+      "declaration": true,
+      "assignment": true,
+      "return": true
+    }],
+    "react/jsx-first-prop-new-line": ["error", "multiline"],
+    "react/jsx-equals-spacing": ["error", "never"],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-no-comment-textnodes": "error",
+    "react/no-find-dom-node": "error",
+    "react/no-danger-with-children": "error",
+    "react/no-unused-prop-types": ["error", {
+      "customValidators": [
+      ],
+      "skipShapeProps": true
+    }],
+    "react/style-prop-object": "error",
+    "react/no-unescaped-entities": "error",
+    "react/no-children-prop": "error",
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "always",
+      "afterOpening": "never"
+    }]
+  }
+}

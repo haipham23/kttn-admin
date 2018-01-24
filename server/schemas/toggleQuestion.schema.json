@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  },
+  "required": ["_id", "isActiver"]
+}
