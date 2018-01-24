@@ -1,7 +1,11 @@
 const Ajv = require('ajv');
 
-const ajv = new Ajv({ allErrors: true, v5: true });
-
+const ajv = new Ajv({
+  allErrors: true,
+  v5: true,
+  removeAdditional: true,
+  $data: true
+});
 
 const check = (schema, data) =>
   new Promise((resolve, reject) => (

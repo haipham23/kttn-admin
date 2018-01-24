@@ -37,8 +37,13 @@ const create = data =>
 
 const update = data =>
   getUpdateProps(data)
-    .then(({ _id, content }) =>
-      QuestionModel.findByIdAndUpdate(_id, { $set: { content } }));
+    .then(({
+      _id,
+      content,
+      answers,
+      result
+    }) =>
+      QuestionModel.findByIdAndUpdate(_id, { $set: { content, answers, result } }));
 
 const toggle = data =>
   getToggleProps(data)

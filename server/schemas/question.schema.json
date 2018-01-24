@@ -5,9 +5,23 @@
       "content": {
         "type": "string",
         "minLength": 1
+      },
+      "answers": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 3,
+        "maxItems": 5,
+        "uniqueItems": true
+      },
+      "result": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": { "$data": "1/answers/length" }
       }
     },
-    "required": ["content"]
+    "required": ["content", "answers", "result"]
   },
   "update": {
     "properties": {
@@ -16,6 +30,20 @@
       },
       "content": {
         "type": "string"
+      },
+      "answers": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 3,
+        "maxItems": 5,
+        "uniqueItems": true
+      },
+      "result": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": { "$data": "1/answers/length" }
       }
     },
     "required": ["_id", "content"]

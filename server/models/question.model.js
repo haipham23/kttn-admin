@@ -5,6 +5,14 @@ const QuestionSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Missing Content']
   },
+  answers: {
+    type: Array,
+    required: [true, 'Missing Answers']
+  },
+  result: {
+    type: Number,
+    required: [true, 'Missing Result']
+  },
   createdAt: {
     type: Date,
     default: Date.now

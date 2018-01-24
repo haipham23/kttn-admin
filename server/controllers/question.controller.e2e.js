@@ -20,7 +20,13 @@ describe('question controller', () => {
 
     const question1 = {
       question: {
-        content: 'First question'
+        content: 'First question',
+        answers: [
+          'Answer 1',
+          'Answer 2',
+          'Answer 3'
+        ],
+        result: 1
       }
     };
 
@@ -54,22 +60,53 @@ describe('question controller', () => {
 
 
   describe('fetch()', () => {
+    const questions = [{
+      content: 'Update Question 1',
+      answers: [
+        'Answer 1',
+        'Answer 2',
+        'Answer 3'
+      ],
+      result: 1
+    }, {
+      content: 'Update Question 2',
+      answers: [
+        'Answer 1',
+        'Answer 2',
+        'Answer 3'
+      ],
+      result: 2,
+      isActive: false
+    }, {
+      content: 'Update Question 3',
+      answers: [
+        'Answer 1',
+        'Answer 2',
+        'Answer 3'
+      ],
+      result: 3
+    }, {
+      content: 'Update Question 4',
+      answers: [
+        'Answer 1',
+        'Answer 2',
+        'Answer 3'
+      ],
+      result: 3
+    }, {
+      content: 'Update Question 5',
+      answers: [
+        'Answer 1',
+        'Answer 2',
+        'Answer 3'
+      ],
+      result: 3
+    }];
+
     beforeEach((done) => {
       QuestionModel
         .remove({})
-        .then(() =>
-          QuestionModel.insertMany([{
-            content: 'Update Question 1'
-          }, {
-            content: 'Update Question 2',
-            isActive: false
-          }, {
-            content: 'Update Question 3'
-          }, {
-            content: 'Update Question 4'
-          }, {
-            content: 'Update Question 5'
-          }]))
+        .then(() => QuestionModel.insertMany(questions))
         .then(() => done());
     });
 
@@ -97,7 +134,13 @@ describe('question controller', () => {
         .remove({})
         .then(() => {
           const Question = new QuestionModel({
-            content: 'Update Question 1'
+            content: 'Update Question 1',
+            answers: [
+              'Answer 1',
+              'Answer 2',
+              'Answer 3'
+            ],
+            result: 1
           });
 
           return Question.save();
@@ -113,7 +156,13 @@ describe('question controller', () => {
       const question2 = {
         question: {
           _id: id,
-          content: 'Update Question 2'
+          content: 'Update Question 2',
+          answers: [
+            'Answer 1',
+            'Answer 2',
+            'Answer 3'
+          ],
+          result: 2
         }
       };
 
@@ -125,6 +174,7 @@ describe('question controller', () => {
         .then((docs) => {
           expect(docs.length).to.equal(1);
           expect(docs[0].content).to.equal('Update Question 2');
+          expect(docs[0].result).to.equal(2);
 
           done();
         });
@@ -133,7 +183,13 @@ describe('question controller', () => {
     it('should fail', (done) => {
       const question2 = {
         question: {
-          content: 'Update Question 2'
+          content: 'Update Question 2',
+          answers: [
+            'Answer 1',
+            'Answer 2',
+            'Answer 3'
+          ],
+          result: 2
         }
       };
 
