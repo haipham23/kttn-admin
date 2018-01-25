@@ -1,9 +1,6 @@
 .home {
   text-align: center;
   height: calc(100vh - 112px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   h1 {
     font-size: 30px;
@@ -13,4 +10,9 @@
     font-size: 50px;
     font-weight: 200;
   }
+}
+
+#all-questions,
+#a-question {
+  display: none;
 }

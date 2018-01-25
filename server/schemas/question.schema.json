@@ -11,9 +11,8 @@
         "items": {
           "type": "string"
         },
-        "minItems": 3,
-        "maxItems": 5,
-        "uniqueItems": true
+        "minItems": 2,
+        "maxItems": 5
       },
       "result": {
         "type": "number",
@@ -37,8 +36,7 @@
           "type": "string"
         },
         "minItems": 3,
-        "maxItems": 5,
-        "uniqueItems": true
+        "maxItems": 5
       },
       "result": {
         "type": "number",
@@ -73,6 +71,14 @@
     "required": ["_id", "isActiver"]
   },
   "remove": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      }
+    },
+    "required": ["_id"]
+  },
+  "find": {
     "properties": {
       "_id": {
         "type": "string"

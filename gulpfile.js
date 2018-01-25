@@ -16,6 +16,8 @@ const runSequence = require('run-sequence');
 const buffer = require('vinyl-buffer');
 const rename = require('gulp-rename');
 const inject = require('gulp-inject-string');
+const moduleImporter = require('sass-module-importer');
+
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -66,7 +68,7 @@ gulp.task('scripts', () => {
 gulp.task('styles', () => {
   return gulp.src(paths.styles.main)
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(sass({ outputStyle: 'compressed', importer: moduleImporter() }))
     .pipe(autoprefixer({ browsers: ['last 3 version'] }))
     .pipe(plumber.stop())
     .pipe(rename(CSS_FILE_NAME))

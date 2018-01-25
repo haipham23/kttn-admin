@@ -6,7 +6,7 @@ const create = (req, res) =>
   ResponseFactory.ok(QuestionService.create, req.body, req, res);
 
 const fetch = (req, res) =>
-  ResponseFactory.withDocs(QuestionService.fetch, req.query, req, res);
+  ResponseFactory.withDocs(QuestionService.fetch, req.params, req, res);
 
 const update = (req, res) =>
   ResponseFactory.ok(QuestionService.update, req.body, req, res);
@@ -15,7 +15,10 @@ const toggle = (req, res) =>
   ResponseFactory.ok(QuestionService.toggle, req.body, req, res);
 
 const remove = (req, res) =>
-  ResponseFactory.ok(QuestionService.remove, req.body, req, res);
+  ResponseFactory.ok(QuestionService.remove, req.params, req, res);
+
+const find = (req, res) =>
+  ResponseFactory.withDocs(QuestionService.find, req.params, req, res);
 
 
 const QuestionController = {
@@ -23,7 +26,8 @@ const QuestionController = {
   fetch,
   update,
   toggle,
-  remove
+  remove,
+  find
 };
 
 module.exports = QuestionController;

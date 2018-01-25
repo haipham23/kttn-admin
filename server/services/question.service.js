@@ -18,7 +18,9 @@ const getFetchProps = (data) => {
 
 const getToggleProps = data => PropFactory.check(QuestionSchema.toggle, data.question);
 
-const getRemoveProps = data => PropFactory.check(QuestionSchema.remove, data.question);
+const getRemoveProps = data => PropFactory.check(QuestionSchema.remove, data._id);
+
+const getFindProps = data => PropFactory.check(QuestionSchema.find, data._id);
 
 
 const fetch = data =>
@@ -54,13 +56,21 @@ const remove = data =>
   getRemoveProps(data)
     .then(_id => QuestionModel.findByIdAndRemove(_id));
 
+const fetchAll = () => QuestionModel.find({});
+
+const find = data =>
+  getFindProps(data)
+    .then(_id => QuestionModel.findById(_id));
+
 
 const QuestionService = {
   fetch,
   create,
   update,
   toggle,
-  remove
+  remove,
+  fetchAll,
+  find
 };
 
 module.exports = QuestionService;

@@ -12,7 +12,8 @@
     "describe": true,
     "it": true,
     "_": true,
-    "document": true
+    "document": true,
+    "window": true
   },
   "plugins": [
     "react"
@@ -130,6 +131,7 @@
       "closingSlash": "never",
       "beforeSelfClosing": "always",
       "afterOpening": "never"
-    }]
+    }],
+    "class-methods-use-this": "off"
   }
 }
