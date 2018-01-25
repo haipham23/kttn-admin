@@ -10,7 +10,8 @@ import QuestionEditor from '../QuestionEditor/QuestionEditor';
 const getQuestion = () => ({
   content: '',
   answers: [],
-  result: 0
+  result: 0,
+  chapter: 0
 });
 
 const onSave = (data, url = '/') =>

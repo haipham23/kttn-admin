@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const timestamps = require('mongoose-timestamp');
+
 
 const QuestionSchema = new mongoose.Schema({
   content: {
@@ -13,18 +15,16 @@ const QuestionSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Missing Result']
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+  chapter: {
+    type: Number,
+    required: [true, 'Missing Chapter']
   },
   isActive: {
     type: Boolean,
     default: true
   }
 });
+
+QuestionSchema.plugin(timestamps);
 
 module.exports = mongoose.model('Question', QuestionSchema);

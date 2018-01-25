@@ -10,7 +10,8 @@ const revert = (state) => {
     _id,
     content,
     answers,
-    result
+    result,
+    chapter
   } = state;
 
   return {
@@ -18,7 +19,8 @@ const revert = (state) => {
       _id,
       content,
       answers: answers.toArray(),
-      result: +result
+      result: +result,
+      chapter: +chapter
     }
   };
 };
@@ -32,6 +34,7 @@ class QuestionEditor extends React.Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onAddAnswer = this.onAddAnswer.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.onSaveNext = this.onSaveNext.bind(this);
   }
 
   onChangeHandler({ target }) {
@@ -54,6 +57,10 @@ class QuestionEditor extends React.Component {
 
   onSave() {
     this.props.onSave(revert(this.state));
+  }
+
+  onSaveNext() {
+    this.props.onSaveNext(revert(this.state));
   }
 
   render() {
@@ -96,6 +103,16 @@ class QuestionEditor extends React.Component {
           </select>
         </div>
         <div className="form-group">
+          <label>Chapter:</label>
+          <input
+            value={this.state.chapter}
+            name="chapter"
+            type="number"
+            className="form-control"
+            onChange={this.onChangeHandler}
+          />
+        </div>
+        <div className="form-group">
           <button className="btn btn-primary" onClick={this.onSave}>Save</button>
         </div>
         {
@@ -104,7 +121,7 @@ class QuestionEditor extends React.Component {
             <div className="form-group">
               <button
                 className="btn btn-secondary"
-                onClick={this.props.onSaveNext}
+                onClick={this.onSaveNext}
               >
                 Save and Add more
               </button>
@@ -134,7 +151,8 @@ QuestionEditor.propTypes = {
     _id: PropTypes.string,
     content: PropTypes.string,
     answers: PropTypes.arrayOf(PropTypes.string),
-    result: PropTypes.number
+    result: PropTypes.number,
+    chapter: PropTypes.number
   }),
   onSave: PropTypes.func.isRequired,
   onSaveNext: PropTypes.func,

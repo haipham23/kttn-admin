@@ -43,9 +43,17 @@ const update = data =>
       _id,
       content,
       answers,
-      result
+      result,
+      chapter
     }) =>
-      QuestionModel.findByIdAndUpdate(_id, { $set: { content, answers, result } }));
+      QuestionModel.findByIdAndUpdate(_id, {
+        $set: {
+          content,
+          answers,
+          result,
+          chapter
+        }
+      }));
 
 const toggle = data =>
   getToggleProps(data)
