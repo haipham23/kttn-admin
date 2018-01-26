@@ -29,6 +29,8 @@ app.use('/', index);
 // catch 404 and forward to error handler
 app.use((req, res) => res.render('error', { status: 404 }));
 
+// error handler
+app.use((err, req, res) => res.render('error', { status: 500 }));
 
 // config mongoose
 mongoose.Promise = Promise;
