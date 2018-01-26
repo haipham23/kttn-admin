@@ -3,26 +3,26 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
-import QuestionEditor from '../QuestionEditor/QuestionEditor';
+import ChapterEditor from '../ChapterEditor/ChapterEditor';
 
 const onSave = data =>
-  axios.put('/api/question', data)
-    .then(() => { window.location.href = '/'; })
+  axios.put('/api/chapter', data)
+    .then(() => { window.location.href = '/chapters'; })
     .catch(() => toast('Failed to edit', { type: toast.TYPE.ERROR, autoClose: 5000 }));
 
 const onDelete = id =>
-  axios.delete(`/api/question/${id}`)
-    .then(() => { window.location.href = '/'; })
+  axios.delete(`/api/chapter/${id}`)
+    .then(() => { window.location.href = '/chapters'; })
     .catch(() => toast('Failed to delete', { type: toast.TYPE.ERROR, autoClose: 5000 }));
 
-class EditQuestion extends React.Component {
+class EditChapter extends React.Component {
   render() {
     const { data } = this.props;
 
     return (
       <div>
-        <QuestionEditor
-          question={data}
+        <ChapterEditor
+          chapter={data}
           onSave={d => onSave(d)}
           onDelete={d => onDelete(d)}
           isEdit
@@ -33,13 +33,13 @@ class EditQuestion extends React.Component {
   }
 }
 
-EditQuestion.propTypes = {
+EditChapter.propTypes = {
   data: PropTypes.shape({
     _id: PropTypes.string,
-    content: PropTypes.string,
-    answers: PropTypes.arrayOf(PropTypes.string),
-    result: PropTypes.number
+    title: PropTypes.string,
+    quote: PropTypes.string,
+    prayer: PropTypes.string
   })
 };
 
-export default EditQuestion;
+export default EditChapter;

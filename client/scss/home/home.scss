@@ -1,13 +1,5 @@
-.home {
+.home,
+.chapter,
+.question {
   text-align: center;
-  height: calc(100vh - 112px);
-
-  h1 {
-    font-size: 30px;
-  }
-
-  h2 {
-    font-size: 50px;
-    font-weight: 200;
-  }
 }

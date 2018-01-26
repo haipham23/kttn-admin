@@ -1,8 +1,9 @@
 const QuestionService = require('../services/question.service');
+const ChapterService = require('../services/chapter.service');
 
 
-const index = (req, res) =>
-  QuestionService.fetchAll()
+const allQuestions = (req, res) =>
+  QuestionService.fetchAll(req)
     .then(data => res.render('pages/index', { data: JSON.stringify(data) }));
 
 const newQuestion = (req, res) => res.render('pages/new-question');
@@ -13,10 +14,25 @@ const editQuestion = (req, res) =>
     .catch(() => res.render('pages/new-question'));
 
 
+const allChapters = (req, res) =>
+  ChapterService.fetchAll()
+    .then(data => res.render('pages/chapters', { data: JSON.stringify(data) }));
+
+const newChapter = (req, res) => res.render('pages/new-chapter');
+
+const editChapter = (req, res) =>
+  ChapterService.find(req.params)
+    .then(doc => res.render('pages/edit-chapter', { doc: JSON.stringify(doc) }))
+    .catch(() => res.render('pages/new-chapter'));
+
+
 const PageController = {
-  index,
+  allQuestions,
   newQuestion,
-  editQuestion
+  editQuestion,
+  allChapters,
+  newChapter,
+  editChapter
 };
 
 module.exports = PageController;

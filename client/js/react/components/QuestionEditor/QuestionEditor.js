@@ -107,7 +107,6 @@ class QuestionEditor extends React.Component {
           <input
             value={this.state.chapter}
             name="chapter"
-            type="number"
             className="form-control"
             onChange={this.onChangeHandler}
           />

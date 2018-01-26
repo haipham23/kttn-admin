@@ -2,6 +2,10 @@ import QuestionsTable from './components/QuestionsTable/QuestionsTable';
 import NewQuestion from './components/NewQuestion/NewQuestion';
 import EditQuestion from './components/EditQuestion/EditQuestion';
 
+import ChapterTable from './components/ChapterTable/ChapterTable';
+import NewChapter from './components/NewChapter/NewChapter';
+import EditChapter from './components/EditChapter/EditChapter';
+
 
 const reactElements = [{
   dom: 'questions-table',
@@ -14,6 +18,17 @@ const reactElements = [{
   dom: 'edit-question-form',
   data: 'a-question',
   element: EditQuestion
+}, {
+  dom: 'chapter-table',
+  data: 'all-chapters',
+  element: ChapterTable
+}, {
+  dom: 'new-chapter-form',
+  element: NewChapter
+}, {
+  dom: 'edit-chapter-form',
+  data: 'a-chapter',
+  element: EditChapter
 }];
 
 
