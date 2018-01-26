@@ -45,13 +45,16 @@ const find = data =>
   getFindProps(data)
     .then(_id => ChapterModel.findById(_id));
 
+const count = () => ChapterModel.count();
+
 
 const QuestionService = {
   create,
   update,
   remove,
   fetchAll,
-  find
+  find,
+  count
 };
 
 module.exports = QuestionService;

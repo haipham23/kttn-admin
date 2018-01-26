@@ -76,6 +76,8 @@ const find = data =>
   getFindProps(data)
     .then(_id => QuestionModel.findById(_id));
 
+const count = () => QuestionModel.count();
+
 
 const QuestionService = {
   fetch,
@@ -85,7 +87,8 @@ const QuestionService = {
   remove,
   fetchAll,
   fetchByChapterId,
-  find
+  find,
+  count
 };
 
 module.exports = QuestionService;

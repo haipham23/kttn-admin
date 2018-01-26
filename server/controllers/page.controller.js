@@ -37,7 +37,19 @@ const editChapter = (req, res) =>
     .then(doc => res.render('pages/edit-chapter', { doc: toString(doc) }))
     .catch(() => res.render('pages/new-chapter'));
 
-const home = (req, res) => res.render('pages/home');
+
+const home = (req, res) =>
+  Promise.all([
+    ChapterService.count(),
+    QuestionService.count()
+  ])
+    .then(results =>
+      res.render('pages/home', {
+        totalChapter: toString(results[0]),
+        totalQuestion: toString(results[1])
+      }))
+    .catch(() => res.render('error', { status: 500 }));
+
 const toHome = (req, res) => res.redirect('/');
 
 const PageController = {
