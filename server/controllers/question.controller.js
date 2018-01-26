@@ -6,7 +6,7 @@ const create = (req, res) =>
   ResponseFactory.ok(QuestionService.create, req.body, req, res);
 
 const fetch = (req, res) =>
-  ResponseFactory.withDocs(QuestionService.fetch, req.params, req, res);
+  ResponseFactory.withDocs(QuestionService.fetch, req.query, req, res);
 
 const update = (req, res) =>
   ResponseFactory.ok(QuestionService.update, req.body, req, res);

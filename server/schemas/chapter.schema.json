@@ -1,0 +1,56 @@
+{
+  "create": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "quote": {
+        "type": "string",
+        "minLength": 1
+      },
+      "prayer": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": ["title", "quote", "prayer"]
+  },
+  "update": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "quote": {
+        "type": "string",
+        "minLength": 1
+      },
+      "prayer": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": ["_id", "title", "quote", "prayer"]
+  },
+  "remove": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      }
+    },
+    "required": ["_id"]
+  },
+  "find": {
+    "properties": {
+      "_id": {
+        "type": "string"
+      }
+    },
+    "required": ["_id"]
+  }
+}

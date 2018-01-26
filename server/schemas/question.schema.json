@@ -20,8 +20,8 @@
         "maximum": { "$data": "1/answers/length" }
       },
       "chapter": {
-        "type": "number",
-        "minimum": 1
+        "type": "string",
+        "minLength": 1
       }
     },
     "required": ["content", "answers", "result", "chapter"]
@@ -48,8 +48,8 @@
         "maximum": { "$data": "1/answers/length" }
       },
       "chapter": {
-        "type": "number",
-        "minimum": 1
+        "type": "string",
+        "minLength": 1
       }
     },
     "required": ["_id", "content", "answers", "result", "chapter"]

@@ -26,7 +26,8 @@ describe('question controller', () => {
           'Answer 2',
           'Answer 3'
         ],
-        result: 1
+        result: 1,
+        chapter: '1'
       }
     };
 
@@ -67,7 +68,8 @@ describe('question controller', () => {
         'Answer 2',
         'Answer 3'
       ],
-      result: 1
+      result: 1,
+      chapter: '1'
     }, {
       content: 'Update Question 2',
       answers: [
@@ -76,6 +78,7 @@ describe('question controller', () => {
         'Answer 3'
       ],
       result: 2,
+      chapter: '1',
       isActive: false
     }, {
       content: 'Update Question 3',
@@ -84,7 +87,8 @@ describe('question controller', () => {
         'Answer 2',
         'Answer 3'
       ],
-      result: 3
+      result: 3,
+      chapter: '1'
     }, {
       content: 'Update Question 4',
       answers: [
@@ -92,7 +96,8 @@ describe('question controller', () => {
         'Answer 2',
         'Answer 3'
       ],
-      result: 3
+      result: 3,
+      chapter: '1'
     }, {
       content: 'Update Question 5',
       answers: [
@@ -100,7 +105,8 @@ describe('question controller', () => {
         'Answer 2',
         'Answer 3'
       ],
-      result: 3
+      result: 3,
+      chapter: '1'
     }];
 
     beforeEach((done) => {
@@ -140,7 +146,8 @@ describe('question controller', () => {
               'Answer 2',
               'Answer 3'
             ],
-            result: 1
+            result: 1,
+            chapter: '1'
           });
 
           return Question.save();
@@ -162,7 +169,8 @@ describe('question controller', () => {
             'Answer 2',
             'Answer 3'
           ],
-          result: 2
+          result: 2,
+          chapter: '1'
         }
       };
 
@@ -189,7 +197,8 @@ describe('question controller', () => {
             'Answer 2',
             'Answer 3'
           ],
-          result: 2
+          result: 2,
+          chapter: '1'
         }
       };
 

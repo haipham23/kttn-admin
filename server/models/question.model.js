@@ -16,7 +16,7 @@ const QuestionSchema = new mongoose.Schema({
     required: [true, 'Missing Result']
   },
   chapter: {
-    type: Number,
+    type: String,
     required: [true, 'Missing Chapter']
   },
   isActive: {
