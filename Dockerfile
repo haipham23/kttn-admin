@@ -1,5 +1,10 @@
 FROM node:8
 
+ARG NODE_ENV=production
+
+ENV NODE_ENV=production
+ENV PORT=8080
+
 # npm install
 ADD package.json /tmp/package.json
 COPY .npmrc /tmp/.npmrc

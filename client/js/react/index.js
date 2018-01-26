@@ -2,44 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import domready from 'domready';
 
-import QuestionsTable from './components/QuestionsTable/QuestionsTable';
-import NewQuestion from './components/NewQuestion/NewQuestion';
-import EditQuestion from './components/EditQuestion/EditQuestion';
+import reactElements from './config';
 
 const parse = (data) => {
   try {
     return JSON.parse(data);
   } catch (e) {
-    return [];
+    return {};
   }
 };
 
 domready(() => {
-  const reactQuestionTable = document.getElementById('react-questions-table');
-  const reactNewQuestion = document.getElementById('react-new-question-form');
-  const reactEditQuestion = document.getElementById('react-edit-question-form');
+  reactElements.forEach((e) => {
+    const dom = document.getElementById(`react-${e.dom}`);
 
-  const allQuestions = document.getElementById('all-questions');
-  const aQuestion = document.getElementById('a-question');
+    if (dom) {
+      const dataDom = document.getElementById(`react-data-${e.data}`);
+      const data = dataDom ? parse(dataDom.innerText) : {};
 
-  if (reactQuestionTable) {
-    ReactDOM.render(
-      <QuestionsTable data={parse(allQuestions.innerText)} />,
-      document.getElementById('react-questions-table')
-    );
-  }
-
-  if (reactNewQuestion) {
-    ReactDOM.render(
-      <NewQuestion />,
-      document.getElementById('react-new-question-form')
-    );
-  }
-
-  if (reactEditQuestion) {
-    ReactDOM.render(
-      <EditQuestion question={parse(aQuestion.innerText)} />,
-      document.getElementById('react-edit-question-form')
-    );
-  }
+      ReactDOM.render(<e.element data={data} />, dom);
+    }
+  });
 });
