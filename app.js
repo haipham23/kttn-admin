@@ -8,6 +8,7 @@ const hbs = require('hbs');
 const logger = require('winston');
 const mongoose = require('mongoose');
 const getenv = require('getenv');
+const basicAuth = require('express-basic-auth');
 
 const index = require('./server/routes/index');
 
@@ -23,6 +24,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(basicAuth({
+  users: { admin: getenv('ADMIN_SECRET') },
+  challenge: true
+}));
+
 
 app.use('/', index);
 
