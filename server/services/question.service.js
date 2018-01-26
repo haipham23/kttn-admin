@@ -22,6 +22,8 @@ const getRemoveProps = data => PropFactory.check(QuestionSchema.remove, data._id
 
 const getFindProps = data => PropFactory.check(QuestionSchema.find, data._id);
 
+const getFetchByChapterIdProps = data =>
+  PropFactory.check(QuestionSchema.findByChapterId, data.chapterId);
 
 const fetch = data =>
   getFetchProps(data)
@@ -66,6 +68,10 @@ const remove = data =>
 
 const fetchAll = () => QuestionModel.find({});
 
+const fetchByChapterId = data =>
+  getFetchByChapterIdProps(data)
+    .then(chapterId => QuestionModel.find({ chapterId }));
+
 const find = data =>
   getFindProps(data)
     .then(_id => QuestionModel.findById(_id));
@@ -78,6 +84,7 @@ const QuestionService = {
   toggle,
   remove,
   fetchAll,
+  fetchByChapterId,
   find
 };
 

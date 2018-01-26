@@ -9,8 +9,8 @@ const ajv = new Ajv({
   $data: true
 });
 
-const validateAndLogError = (nAjv, schema, data) => {
-  const result = nAjv.validate(schema, data);
+const validateAndLogError = (schema, data) => {
+  const result = ajv.validate(schema, data);
 
   if (!result) {
     logger.error('validation: -- ', ajv.errorsText(), data);
@@ -21,7 +21,7 @@ const validateAndLogError = (nAjv, schema, data) => {
 
 const check = (schema, data) => (
   new Promise((resolve, reject) => (
-    validateAndLogError(ajv, schema, data)
+    validateAndLogError(schema, data)
       ? resolve(data)
       : reject(new Error('INVALID_PROPS'))
   )));

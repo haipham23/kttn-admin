@@ -3,8 +3,8 @@ const ChapterService = require('../services/chapter.service');
 
 
 const allQuestions = (req, res) =>
-  QuestionService.fetchAll(req)
-    .then(data => res.render('pages/index', { data: JSON.stringify(data) }));
+  QuestionService.fetchByChapterId(req.params)
+    .then(data => res.render('pages/questions', { data: JSON.stringify(data) }));
 
 const newQuestion = (req, res) => res.render('pages/new-question');
 

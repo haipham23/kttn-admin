@@ -70,7 +70,8 @@
   "toggle": {
     "properties": {
       "_id": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1
       },
       "isActive": {
         "type": "boolean"
@@ -81,7 +82,8 @@
   "remove": {
     "properties": {
       "_id": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1
       }
     },
     "required": ["_id"]
@@ -89,9 +91,19 @@
   "find": {
     "properties": {
       "_id": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1
       }
     },
     "required": ["_id"]
+  },
+  "findByChapterId": {
+    "properties": {
+      "chapterId": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": ["chapterId"]
   }
 }
