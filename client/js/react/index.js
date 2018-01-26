@@ -20,7 +20,10 @@ domready(() => {
       const dataDom = document.getElementById(`react-data-${e.data}`);
       const data = dataDom ? parse(dataDom.innerText) : {};
 
-      ReactDOM.render(<e.element data={data} />, dom);
+      const dataDom2 = document.getElementById(`react-data-${e.data2}`);
+      const data2 = dataDom2 ? parse(dataDom2.innerText) : {};
+
+      ReactDOM.render(<e.element data={data} data2={data2} />, dom);
     }
   });
 });

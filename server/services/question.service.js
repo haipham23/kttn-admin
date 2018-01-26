@@ -70,7 +70,7 @@ const fetchAll = () => QuestionModel.find({});
 
 const fetchByChapterId = data =>
   getFetchByChapterIdProps(data)
-    .then(chapterId => QuestionModel.find({ chapterId }));
+    .then(chapterId => QuestionModel.find({ chapter: chapterId }));
 
 const find = data =>
   getFindProps(data)

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
 
 import TextField from '../TextField/TextField';
 
@@ -96,6 +97,7 @@ class ChapterEditor extends React.Component {
             </div>
           )
         }
+        <ToastContainer />
       </div>
     );
   }

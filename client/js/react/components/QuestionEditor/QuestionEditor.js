@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
+import { ToastContainer } from 'react-toastify';
 
 
 const convert = data => Object.assign({}, data, { answers: List(data.answers) });
@@ -20,7 +21,7 @@ const revert = (state) => {
       content,
       answers: answers.toArray(),
       result: +result,
-      chapter: +chapter
+      chapter
     }
   };
 };
@@ -104,12 +105,14 @@ class QuestionEditor extends React.Component {
         </div>
         <div className="form-group">
           <label>Chapter:</label>
-          <input
-            value={this.state.chapter}
-            name="chapter"
-            className="form-control"
-            onChange={this.onChangeHandler}
-          />
+          <select name="chapter" onChange={this.onChangeHandler} value={this.state.chapter}>
+            <option value="0" key="chapter-0">Please select</option>
+            {
+              this.props.chapters.map((chapter, idx) => (
+                <option key={`chapter-${idx}`} value={chapter._id}>{chapter.title}</option>
+              ))
+            }
+          </select>
         </div>
         <div className="form-group">
           <button className="btn btn-primary" onClick={this.onSave}>Save</button>
@@ -140,6 +143,7 @@ class QuestionEditor extends React.Component {
             </div>
           )
         }
+        <ToastContainer />
       </div>
     );
   }
@@ -151,8 +155,12 @@ QuestionEditor.propTypes = {
     content: PropTypes.string,
     answers: PropTypes.arrayOf(PropTypes.string),
     result: PropTypes.number,
-    chapter: PropTypes.number
+    chapter: PropTypes.string
   }),
+  chapters: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string
+  })),
   onSave: PropTypes.func.isRequired,
   onSaveNext: PropTypes.func,
   onDelete: PropTypes.func,

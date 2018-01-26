@@ -13,10 +13,12 @@ const reactElements = [{
   element: QuestionsTable
 }, {
   dom: 'new-question-form',
+  data2: 'chapters',
   element: NewQuestion
 }, {
   dom: 'edit-question-form',
   data: 'a-question',
+  data2: 'chapters',
   element: EditQuestion
 }, {
   dom: 'chapter-table',

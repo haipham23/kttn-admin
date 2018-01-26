@@ -4,6 +4,10 @@ const PageController = require('../controllers/page.controller');
 const QuestionController = require('../controllers/question.controller');
 const ChapterController = require('../controllers/chapter.controller');
 
+
+router.get('/', PageController.home);
+router.get('/questions', PageController.toHome);
+
 /* questions */
 router.get('/questions/:chapterId', PageController.allQuestions);
 router.get('/new-question', PageController.newQuestion);

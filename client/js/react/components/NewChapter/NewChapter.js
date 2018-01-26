@@ -1,10 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-
 
 import ChapterEditor from '../ChapterEditor/ChapterEditor';
+
+import ToastFactory from '../../../factories/toast.factory';
 
 
 const getIniState = () => ({
@@ -16,7 +16,7 @@ const getIniState = () => ({
 const onSave = (data, url = '/chapters') =>
   axios.post('/api/chapter', data)
     .then(() => { window.location.href = url; })
-    .catch(() => toast('Failed to save', { type: toast.TYPE.ERROR, autoClose: 5000 }));
+    .catch(() => ToastFactory.warn('Failed to save'));
 
 const onSaveOnce = data => onSave(data, '/chapters');
 const onSaveNext = data => onSave(data, '/new-chapter');
@@ -30,7 +30,6 @@ class NewQuestion extends React.Component {
           onSave={onSaveOnce}
           onSaveNext={onSaveNext}
         />
-        <ToastContainer />
       </div>
     );
   }

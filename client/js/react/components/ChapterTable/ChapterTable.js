@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 
-const onRowClick = (state, rowInfo) => ({
-  onClick: () => {
-    window.location.href = `/edit-chapter/${rowInfo.original._id}`;
-  }
-});
+const onEditRow = (id) => {
+  window.location.href = `/edit-chapter/${id}`;
+};
+
+const onQuestionRow = (id) => {
+  window.location.href = `/questions/${id}`;
+};
 
 class ChapterTable extends React.Component {
   render() {
@@ -19,13 +21,33 @@ class ChapterTable extends React.Component {
           {
             Header: 'Chapter',
             accessor: 'title'
+          },
+          {
+            Header: 'Actions',
+            accessor: '_id',
+            Cell: ({ value }) =>
+              (
+                <div>
+                  <button
+                    className="btn btn-secondary btn-sm mr-10"
+                    onClick={() => onEditRow(value)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => onQuestionRow(value)}
+                  >
+                    List of Questions
+                  </button>
+                </div>
+              )
           }
         ]}
         noDataText="No chapter yet!"
         defaultPageSize={10}
         className="-striped -highlight"
         showPaginationBottom
-        getTrProps={onRowClick}
       />
     );
   }
