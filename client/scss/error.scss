@@ -1,0 +1,22 @@
+.error {
+  h1 {
+    font-size: 5rem;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+  }
+
+  &-block {
+    text-align: center;
+  }
+
+  &-details {
+    font-weight: 200;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+}

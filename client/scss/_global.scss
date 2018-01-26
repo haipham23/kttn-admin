@@ -1,3 +1,7 @@
 .react-data {
   display: none;
 }
+
+.full-height {
+  min-height: calc(100vh - 56px);
+}
