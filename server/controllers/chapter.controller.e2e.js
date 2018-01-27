@@ -162,7 +162,7 @@ describe('chapter controller', () => {
     it('should fail', (done) => {
       request(app)
         .delete('/chapter/1')
-        .expect(400, 'SERVER_ERROR')
+        .expect(200, 'OK')
         .then(() => ChapterModel.find({}))
         .then((docs) => {
           expect(docs.length).to.equal(1);

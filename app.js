@@ -9,6 +9,7 @@ const logger = require('winston');
 const mongoose = require('mongoose');
 const getenv = require('getenv');
 const basicAuth = require('express-basic-auth');
+const helmet = require('helmet');
 
 const index = require('./server/routes/index');
 
@@ -20,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

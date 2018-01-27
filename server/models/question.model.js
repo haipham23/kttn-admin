@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const timestamps = require('mongoose-timestamp');
+const shortid = require('shortid');
 
 
 const QuestionSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    default: shortid.generate
+  },
   content: {
     type: String,
     required: [true, 'Missing Content']
