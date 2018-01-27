@@ -16,7 +16,7 @@ const getQuestion = () => ({
 
 const onSave = data =>
   axios.post('/api/question', data)
-    .then(() => ToastFactory.warn('Save Success!'))
+    .then(() => ToastFactory.success('Save Success!'))
     .catch(() => ToastFactory.warn('Failed to save'));
 
 class NewQuestion extends React.Component {

@@ -67,7 +67,7 @@ class ChapterEditor extends React.Component {
           value={this.state.prayer}
           onChange={this.onChangeHandler}
         />
-        <div className="row">
+        <div className="row mt-40">
           <div className="col-12" style={{ display: 'flex' }}>
             <button
               className="btn btn-secondary"

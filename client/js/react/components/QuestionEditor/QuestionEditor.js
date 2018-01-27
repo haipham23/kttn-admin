@@ -35,7 +35,6 @@ class QuestionEditor extends React.Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onAddAnswer = this.onAddAnswer.bind(this);
     this.onSave = this.onSave.bind(this);
-    this.onSaveNext = this.onSaveNext.bind(this);
   }
 
   onChangeHandler({ target }) {
@@ -58,10 +57,6 @@ class QuestionEditor extends React.Component {
 
   onSave() {
     this.props.onSave(revert(this.state));
-  }
-
-  onSaveNext() {
-    this.props.onSaveNext(revert(this.state));
   }
 
   onBack() {
@@ -96,29 +91,45 @@ class QuestionEditor extends React.Component {
             </div>
           ))
         }
-        <div className="form-group">
-          <label>Correct answer:</label>
-          <select name="result" onChange={this.onChangeHandler} value={this.state.result}>
-            <option value="0" key="result-0">Please select</option>
-            {
-              this.state.answers.map((answer, idx) => (
-                <option key={`result-${idx}`} value={idx + 1}>{idx + 1}</option>
-              ))
-            }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Chapter:</label>
-          <select name="chapter" onChange={this.onChangeHandler} value={this.state.chapter}>
-            <option value="0" key="chapter-0">Please select</option>
-            {
-              this.props.chapters.map((chapter, idx) => (
-                <option key={`chapter-${idx}`} value={chapter._id}>{chapter.title}</option>
-              ))
-            }
-          </select>
-        </div>
         <div className="row">
+          <div className="col-md-3">
+            <div className="form-group">
+              <label>Correct answer:</label>
+              <select
+                className="form-control"
+                name="result"
+                onChange={this.onChangeHandler}
+                value={this.state.result}
+              >
+                <option value="0" key="result-0">Please select</option>
+                {
+                  this.state.answers.map((answer, idx) => (
+                    <option key={`result-${idx}`} value={idx + 1}>{idx + 1}</option>
+                  ))
+                }
+              </select>
+            </div>
+          </div>
+          <div className="col-md-9">
+            <div className="form-group">
+              <label>Chapter:</label>
+              <select
+                className="form-control"
+                name="chapter"
+                onChange={this.onChangeHandler}
+                value={this.state.chapter}
+              >
+                <option value="0" key="chapter-0">Please select</option>
+                {
+                  this.props.chapters.map((chapter, idx) => (
+                    <option key={`chapter-${idx}`} value={chapter._id}>{chapter.title}</option>
+                  ))
+                }
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-40">
           <div className="col-12" style={{ display: 'flex' }}>
             <button
               className="btn btn-secondary"
