@@ -18,7 +18,6 @@ class ChapterEditor extends React.Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onAddAnswer = this.onAddAnswer.bind(this);
     this.onSave = this.onSave.bind(this);
-    this.onSaveNext = this.onSaveNext.bind(this);
   }
 
   onChangeHandler({ target }) {
@@ -43,8 +42,8 @@ class ChapterEditor extends React.Component {
     this.props.onSave(revert(this.state));
   }
 
-  onSaveNext() {
-    this.props.onSaveNext(revert(this.state));
+  onBack() {
+    window.location.href = '/chapters';
   }
 
   render() {
@@ -68,35 +67,23 @@ class ChapterEditor extends React.Component {
           value={this.state.prayer}
           onChange={this.onChangeHandler}
         />
-        <div className="form-group">
-          <button className="btn btn-primary" onClick={this.onSave}>Save</button>
+        <div className="row">
+          <div className="col-12" style={{ display: 'flex' }}>
+            <button
+              className="btn btn-secondary"
+              onClick={this.onBack}
+              style={{ marginRight: 'auto' }}
+            >
+              Back
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={this.onSave}
+            >
+              Save
+            </button>
+          </div>
         </div>
-        {
-          !this.props.isEdit &&
-          (
-            <div className="form-group">
-              <button
-                className="btn btn-secondary"
-                onClick={this.onSaveNext}
-              >
-                Save and Add more
-              </button>
-            </div>
-          )
-        }
-        {
-          this.props.isEdit &&
-          (
-            <div className="form-group">
-              <button
-                className="btn btn-secondary"
-                onClick={() => this.props.onDelete(this.state._id)}
-              >
-                Delete
-              </button>
-            </div>
-          )
-        }
         <ToastContainer />
       </div>
     );
@@ -110,11 +97,7 @@ ChapterEditor.propTypes = {
     quote: PropTypes.string,
     prayer: PropTypes.string
   }),
-  onSave: PropTypes.func.isRequired,
-  onSaveNext: PropTypes.func,
-  onDelete: PropTypes.func,
-
-  isEdit: PropTypes.bool
+  onSave: PropTypes.func.isRequired
 };
 
 export default ChapterEditor;

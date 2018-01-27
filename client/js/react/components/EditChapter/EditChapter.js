@@ -8,12 +8,7 @@ import ToastFactory from '../../../factories/toast.factory';
 
 const onSave = data =>
   axios.put('/api/chapter', data)
-    .then(() => { window.location.href = '/chapters'; })
-    .catch(() => ToastFactory.warn('Failed to edit'));
-
-const onDelete = id =>
-  axios.delete(`/api/chapter/${id}`)
-    .then(() => { window.location.href = '/chapters'; })
+    .then(() => ToastFactory.success('Save Success!'))
     .catch(() => ToastFactory.warn('Failed to edit'));
 
 class EditChapter extends React.Component {
@@ -24,9 +19,7 @@ class EditChapter extends React.Component {
       <div>
         <ChapterEditor
           chapter={data}
-          onSave={d => onSave(d)}
-          onDelete={d => onDelete(d)}
-          isEdit
+          onSave={onSave}
         />
       </div>
     );

@@ -14,13 +14,10 @@ const getQuestion = () => ({
   chapter: ''
 });
 
-const onSave = (data, url = '/') =>
+const onSave = data =>
   axios.post('/api/question', data)
-    .then(() => { window.location.href = url; })
+    .then(() => ToastFactory.warn('Save Success!'))
     .catch(() => ToastFactory.warn('Failed to save'));
-
-const onSaveOnce = data => onSave(data, '/');
-const onSaveNext = data => onSave(data, '/new-question');
 
 class NewQuestion extends React.Component {
   render() {
@@ -29,8 +26,7 @@ class NewQuestion extends React.Component {
         <QuestionEditor
           question={getQuestion()}
           chapters={this.props.data2}
-          onSave={onSaveOnce}
-          onSaveNext={onSaveNext}
+          onSave={onSave}
         />
       </div>
     );

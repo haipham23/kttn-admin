@@ -64,6 +64,10 @@ class QuestionEditor extends React.Component {
     this.props.onSaveNext(revert(this.state));
   }
 
+  onBack() {
+    window.history.go(-1);
+  }
+
   render() {
     return (
       <div>
@@ -114,35 +118,23 @@ class QuestionEditor extends React.Component {
             }
           </select>
         </div>
-        <div className="form-group">
-          <button className="btn btn-primary" onClick={this.onSave}>Save</button>
+        <div className="row">
+          <div className="col-12" style={{ display: 'flex' }}>
+            <button
+              className="btn btn-secondary"
+              onClick={this.onBack}
+              style={{ marginRight: 'auto' }}
+            >
+              Back
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={this.onSave}
+            >
+              Save
+            </button>
+          </div>
         </div>
-        {
-          !this.props.isEdit &&
-          (
-            <div className="form-group">
-              <button
-                className="btn btn-secondary"
-                onClick={this.onSaveNext}
-              >
-                Save and Add more
-              </button>
-            </div>
-          )
-        }
-        {
-          this.props.isEdit &&
-          (
-            <div className="form-group">
-              <button
-                className="btn btn-secondary"
-                onClick={() => this.props.onDelete(this.state._id)}
-              >
-                Delete
-              </button>
-            </div>
-          )
-        }
         <ToastContainer />
       </div>
     );
@@ -161,11 +153,7 @@ QuestionEditor.propTypes = {
     _id: PropTypes.string,
     title: PropTypes.string
   })),
-  onSave: PropTypes.func.isRequired,
-  onSaveNext: PropTypes.func,
-  onDelete: PropTypes.func,
-
-  isEdit: PropTypes.bool
+  onSave: PropTypes.func.isRequired
 };
 
 export default QuestionEditor;

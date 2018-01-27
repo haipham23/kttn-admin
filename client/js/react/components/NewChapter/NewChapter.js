@@ -13,13 +13,10 @@ const getIniState = () => ({
   prayer: ''
 });
 
-const onSave = (data, url = '/chapters') =>
+const onSave = data =>
   axios.post('/api/chapter', data)
-    .then(() => { window.location.href = url; })
+    .then(() => ToastFactory.success('Save Success!'))
     .catch(() => ToastFactory.warn('Failed to save'));
-
-const onSaveOnce = data => onSave(data, '/chapters');
-const onSaveNext = data => onSave(data, '/new-chapter');
 
 class NewQuestion extends React.Component {
   render() {
@@ -27,8 +24,7 @@ class NewQuestion extends React.Component {
       <div>
         <ChapterEditor
           chapter={getIniState()}
-          onSave={onSaveOnce}
-          onSaveNext={onSaveNext}
+          onSave={onSave}
         />
       </div>
     );
