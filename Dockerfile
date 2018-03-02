@@ -7,16 +7,16 @@ ENV PORT=8080
 
 # npm install
 ADD package.json /tmp/package.json
-COPY .npmrc /tmp/.npmrc
+ADD package-lock.json /tmp/package-lock.json
 
 RUN cd /tmp && npm install
-RUN rm -f /tmp/.npmrc
 
 RUN mkdir -p /opt/app-root && cp -a /tmp/node_modules /opt/app-root/
 
 WORKDIR /opt/app-root/
 COPY . .
 
+RUN npm rebuild node-sass --force
 RUN npm run build
 
 EXPOSE 8080

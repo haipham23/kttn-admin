@@ -41,13 +41,8 @@ const options = {
   }
 };
 
-const JS_FILE_NAME = isProd
-  ? 'index.js?v=' + new Date().getTime()
-  : 'index.js';
-
-const CSS_FILE_NAME = isProd
-  ? 'styles.css?v=' + new Date().getTime()
-  : 'styles.css';
+const JS_FILE_NAME = 'index.js';
+const CSS_FILE_NAME = 'styles.css';
 
 
 gulp.task('scripts', () => {

@@ -44,9 +44,7 @@
     "react-table": "^6.7.6",
     "react-toastify": "^3.3.0",
     "shortid": "^2.2.8",
-    "winston": "^2.4.0"
-  },
-  "devDependencies": {
+    "winston": "^2.4.0",
     "axios-mock-adapter": "^1.11.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
